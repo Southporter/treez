@@ -306,7 +306,7 @@ pub const Tree = opaque {
             return externs.ts_tree_cursor_current_node(cursor);
         }
 
-        pub fn getCurrentFieldName(cursor: *const Cursor) []const u8 {
+        pub fn getCurrentFieldName(cursor: *const Cursor) [*:0]const u8 {
             return externs.ts_tree_cursor_current_field_name(cursor);
         }
 
@@ -322,6 +322,13 @@ pub const Tree = opaque {
         /// Returns true on success
         pub fn gotoNextSibling(cursor: *Cursor) bool {
             return externs.ts_tree_cursor_goto_next_sibling(cursor);
+        }
+
+        /// Returns true on success
+        /// Note: Will be slower than gotoNextSibling because it has to
+        /// iterate through all preceeding siblings
+        pub fn gotoPreviousSibling(cursor: *Cursor) bool {
+            return externs.ts_tree_cursor_goto_previous_sibling(cursor);
         }
 
         /// Returns true on success
@@ -341,6 +348,11 @@ pub const Tree = opaque {
                 false
             else
                 true;
+        }
+
+        /// Returns true on success
+        pub fn gotoLastChild(cursor: *Cursor) bool {
+            return externs.ts_tree_cursor_goto_last_child(cursor);
         }
 
         pub fn dupe(cursor: *const Cursor) Cursor {
