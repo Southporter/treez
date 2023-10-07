@@ -306,7 +306,7 @@ pub const Tree = opaque {
             return externs.ts_tree_cursor_current_node(cursor);
         }
 
-        pub fn getCurrentFieldName(cursor: *const Cursor) [*:0]const u8 {
+        pub fn getCurrentFieldName(cursor: *const Cursor) ?[*:0]const u8 {
             return externs.ts_tree_cursor_current_field_name(cursor);
         }
 
