@@ -379,9 +379,11 @@ pub const Tree = opaque {
         pub extern fn ts_tree_cursor_current_field_id(*const Cursor) FieldId;
         pub extern fn ts_tree_cursor_goto_parent(*Cursor) bool;
         pub extern fn ts_tree_cursor_goto_next_sibling(*Cursor) bool;
+        pub extern fn ts_tree_cursor_goto_previous_sibling(*Cursor) bool;
         pub extern fn ts_tree_cursor_goto_first_child(*Cursor) bool;
         pub extern fn ts_tree_cursor_goto_first_child_for_byte(*Cursor, u32) i64;
         pub extern fn ts_tree_cursor_goto_first_child_for_point(*Cursor, Point) i64;
+        pub extern fn ts_tree_cursor_goto_last_child(*Cursor) bool;
         pub extern fn ts_tree_cursor_copy(*const Cursor) Cursor;
     };
 };
